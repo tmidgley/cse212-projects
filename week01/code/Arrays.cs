@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 public static class Arrays
 {
     /// <summary>
@@ -9,11 +11,20 @@ public static class Arrays
     public static double[] MultiplesOf(double number, int length)
     {
         // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Create a new double array with the same size as length
+        // Loop through each index in the arra, starting at 0
+        // For each index, multiply number by index + 1 to get the correct multiple
+        // Store that mutiple in the array
+        // After the loop finishes, return the array
 
-        return []; // replace this return statement with your own
+        double[] multiples = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            multiples[i] = number * (i + 1);
+        }
+
+        return multiples; // replace this return statement with your own
     }
 
     /// <summary>
@@ -26,8 +37,23 @@ public static class Arrays
     public static void RotateListRight(List<int> data, int amount)
     {
         // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Find the index where the last 'amount' numbers begin
+        //Copy the last 'amount' numbers into a temporary list
+        // Copy the remaining numbers from the beginning into another temporary list
+        // Clear the original list
+        // Add the last numbers first
+        // Add the beginning numbers after that
+
+        int splitIndex = data.Count - amount;
+
+        List<int> lastPart = data.GetRange(splitIndex, amount);
+
+        List<int> firstPart = data.GetRange(0, splitIndex);
+
+        data.Clear();
+
+        data.AddRange(lastPart);
+
+        data.AddRange(firstPart);
     }
 }
