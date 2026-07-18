@@ -11,30 +11,21 @@ public class Translator
         Console.WriteLine(englishToGerman.Translate("Train")); // ???
     }
 
-    private Dictionary<string, string> _words = new();
+    private Dictionary<string, string> _words = new(); //create the dictionary (empty)
 
-    /// <summary>
-    /// Add the translation from 'from_word' to 'to_word'
-    /// For example, in a english to german dictionary:
-    /// 
-    /// my_translator.AddWord("book","buch")
-    /// </summary>
-    /// <param name="fromWord">The word to translate from</param>
-    /// <param name="toWord">The word to translate to</param>
-    /// <returns>fixed array of divisors</returns>
-    public void AddWord(string fromWord, string toWord)
+    public void AddWord(string fromWord, string toWord) //adding words
     {
-        // ADD YOUR CODE HERE
+        _words[fromWord] = toWord; //replaces variables with actual values STORES A VALUE "SET THE KEY"
     }
-
-    /// <summary>
-    /// Translates the from word into the word that this stores as the translation
-    /// </summary>
-    /// <param name="fromWord">The word to translate</param>
-    /// <returns>The translated word or "???" if no translation is available</returns>
     public string Translate(string fromWord)
     {
-        // ADD YOUR CODE HERE
-        return "";
+        string newWord = "???"; //assuming we don't know the answer
+
+        if (_words.ContainsKey(fromWord)) //replace the variable if there is a match
+        {
+            newWord = _words[fromWord];// RETRIEVES A VALUE "GO FIND A VALUE UNDER THIS KEY"
+        }
+
+        return newWord;
     }
 }
